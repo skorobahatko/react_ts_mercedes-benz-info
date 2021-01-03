@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  width: 100vw;
+}
+.menu-droplist {
+  width: 100px;
+  height: 100px;
+  background-color:red;
+}
+.menu-droplist:hover {
+  width: 96px;
+  height: 96px;
+  border: 2px solid blue;
+}
