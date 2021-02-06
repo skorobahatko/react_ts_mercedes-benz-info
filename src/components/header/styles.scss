@@ -1,0 +1,34 @@
+
+header {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    .header_left_side_container {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      img.logo_img {
+        width: 70px;
+        height: 70px;
+        margin-left: 30px;
+      }
+      .search_input {
+        margin-left: 40px;
+      }
+    }
+    .header_right_side_container {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+  }
+   
+}
