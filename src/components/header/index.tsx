@@ -3,19 +3,23 @@ import * as React from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useStore } from 'react-redux';
 import logo from '../../images/skateboard.png';
+import { ApiRoutesEnum, CharactersWithInfo, GetAll } from '../../models';
 import { api } from '../../utils';
-import { getAllCharacters } from '../../store';
+import { characterActions } from '../../store';
 import './styles.scss';
 
 const Header: React.FC = () => {
   // const [state, changeState] = useState();
   const dispatch = useDispatch();
-  // const store = useStore();
+  const store = useStore();
 
   const loginHandler = async () => {
-    const res = await api.getAll();
-    dispatch(getAllCharacters(res.data));
-    
+    const res: CharactersWithInfo = await api.getAll(ApiRoutesEnum.getCh)
+
+    if (res) {
+      dispatch(characterActions.getAllCharacters(res));
+    }
+    console.log(store.getState());
     console.log(res);
   }
     return (
