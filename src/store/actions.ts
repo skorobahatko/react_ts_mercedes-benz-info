@@ -117,3 +117,31 @@ export const episodesActions = {
   getMultiplyEpisodes,
   getFilteredEpisodes
 };
+
+export const CHARACTERS_PAGE = 'CHARACTERS_PAGE';
+export const LOCATIONS_PAGE = 'LOCATIONS_PAGE';
+export const EPISODES_PAGE = 'EPISODES_PAGE';
+
+const charactersPage = (page: number) => {
+  return {
+    type: CHARACTERS_PAGE,
+    payload: page
+  }
+}
+const locationsPage = (page: number) => {
+  return {
+    type: CHARACTERS_PAGE,
+    payload: page
+  }
+}
+const episodesPage = (page: number) => {
+  return {
+    type: CHARACTERS_PAGE,
+    payload: page
+  }
+}
+export const allPages = {
+  charactersPage,
+  locationsPage,
+  episodesPage
+}

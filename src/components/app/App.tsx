@@ -3,15 +3,17 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Redirect
 } from 'react-router-dom';
 import { store } from '../../store'
 import { Provider } from 'react-redux';
-import { HomePage } from '../home-page';
-import { SelfPage } from '../self-page';
+import { HomePage } from '../home-page/HomePage';
+import { CharacterCardsPage } from '../characters-page';
+import { EpisodesCardsPage } from '../episodes-page';
+import { LocationsCardsPage } from '../location-page';
+import { CharacterSelfPage } from '../character-self-page';
 import './App.scss';
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
@@ -20,10 +22,18 @@ export const App: React.FC = () => {
           <Route path = '/home'>
             <HomePage/>
           </Route>
-          <Route path = '/self'>
-            <SelfPage/>
+          <Route path = '/characters/page=:page'>
+            <CharacterCardsPage/>
           </Route>
-          <Redirect from = '/' to = '/home'/>
+          <Route path = '/characters/:id'>
+            <CharacterSelfPage/>
+          </Route>
+          <Route path = '/episodes/page=:page'>
+            <EpisodesCardsPage/>
+          </Route>
+          <Route path = '/locations/page=:page'>
+            <LocationsCardsPage/>
+          </Route>
           <Route path = '*'>
             <div>404 not found</div>
           </Route>
@@ -33,4 +43,4 @@ export const App: React.FC = () => {
     </React.StrictMode>
   );
 }
-
+export { App };

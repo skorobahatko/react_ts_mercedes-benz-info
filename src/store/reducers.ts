@@ -10,22 +10,23 @@ import {
     GET_ALL_EPISODES,
     GET_ONE_EPISODE,
     GET_MULTIPLY_EPISODES,
-    GET_FILTERED_EPISODES
+    GET_FILTERED_EPISODES,
+    EPISODES_PAGE,
+    LOCATIONS_PAGE,
+    CHARACTERS_PAGE
 } from './actions';
 import { combineReducers } from 'redux';
 import {
-  CharacterStore,
   allCharacterActionsType,
-  LocationStore,
   allLocationActionsType,
-  EpisodeStore,
-  allEpisodeActionsType
+  allEpisodeActionsType,
+  CharacterStore,
+  LocationStore,
+  EpisodeStore
 } from '../models/interfaces';
-const characterStore: CharacterStore = {}
-const locationStore: LocationStore = {}
-const episodeStore: EpisodeStore = {}
+import { globalStore } from './storeTemplates';
 
-function charactersReducer (state = characterStore, action: allCharacterActionsType): CharacterStore {
+function charactersReducer (state = globalStore.characters, action: allCharacterActionsType): CharacterStore {
   let updatedState = {...state};
   switch (action.type) {
     case GET_ALL_CHARACTERS:
@@ -40,10 +41,13 @@ function charactersReducer (state = characterStore, action: allCharacterActionsT
     case GET_FILTERED_CHARACTERS:
       updatedState.filteredCharacters = action.payload;
       return updatedState;
+    case CHARACTERS_PAGE:
+      updatedState.page = action.payload;
+      return updatedState;
     default: return updatedState;
   }
 }
-function locationReducer (state = locationStore, action: allLocationActionsType): LocationStore {
+function locationReducer (state = globalStore.location, action: allLocationActionsType): LocationStore {
   let updatedState = {...state};
   switch (action.type) {
     case GET_ALL_LOCATIONS:
@@ -58,10 +62,13 @@ function locationReducer (state = locationStore, action: allLocationActionsType)
     case GET_FILTERED_LOCATIONS:
       updatedState.filteredLocations = action.payload;
       return updatedState;
+    case LOCATIONS_PAGE:
+      updatedState.page = action.payload;
+      return updatedState;
     default: return updatedState;
   }
 }
-function episodeReducer (state = episodeStore, action: allEpisodeActionsType): EpisodeStore {
+function episodeReducer (state = globalStore.episode, action: allEpisodeActionsType): EpisodeStore {
   let updatedState = {...state};
   switch (action.type) {
     case GET_ALL_EPISODES:
@@ -76,8 +83,11 @@ function episodeReducer (state = episodeStore, action: allEpisodeActionsType): E
     case GET_FILTERED_EPISODES:
       updatedState.filteredEpisodes = action.payload;
       return updatedState;
+    case EPISODES_PAGE:
+      updatedState.page = action.payload;
+      return updatedState;
     default: return updatedState;
   }
 }
-const rootReducer = combineReducers({charactersReducer, locationReducer, episodeReducer})
-export { rootReducer, charactersReducer };
+const rootReducer = combineReducers({characters: charactersReducer, location: locationReducer, episode: episodeReducer})
+export { rootReducer };

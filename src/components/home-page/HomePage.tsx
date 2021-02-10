@@ -1,5 +1,5 @@
 import './styles.scss';
-import Header from '../header';
+import { Header } from '../header/Header';
 
 export const HomePage: React.FC = () => {
   return (

@@ -1,4 +1,4 @@
-import { CharactersWithInfo, LocationWithInfo } from './../models/interfaces';
+import { CharactersWithInfo, Character, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiRoutesEnum, GetAll, GetOne, GetMultiply, GetFiltered } from '../models';
 // import config from '../config';
@@ -8,34 +8,105 @@ const apiInstance: AxiosInstance = axios.create({
 });
 
 class api {
-  static getAll = async (url: ApiRoutesEnum) => {
-    const response: AxiosResponse<CharactersWithInfo | LocationWithInfo> = await apiInstance.get(url)
+  static getAllCharacters = async (url: ApiRoutesEnum, page?: number) => {
+    const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url, {params: {page}})
     if (!response) {
       console.error('Someting goes wrong');
     }
     const { data } = response;
     return data;
   }
-  static getOne = async (url: string) => {
-    const response: AxiosResponse<GetOne> = await apiInstance.get(url)
+  static getOneCharacter = async (url: string) => {
+    const response: AxiosResponse<Character> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
-    return response;
+    const { data } = response;
+    return data;
   }
-  static getMultiply = async (url: string) => {
-    const response: AxiosResponse<GetMultiply> = await apiInstance.get(url)
+  static getMultiplyCharacters = async (url: string) => {
+    const response: AxiosResponse<Character[]> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
-    return response;
+    const { data } = response;
+    return data;
   }
-  static getFiltered = async (url: string) => {
-    const response: AxiosResponse<GetFiltered> = await apiInstance.get(url)
+  static getFilteredCharacters = async (url: string) => {
+    const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
-    return response;
+    const { data } = response;
+    return data;
+  }
+
+
+  static getAllLocations = async (url: ApiRoutesEnum, page?: number) => {
+    const response: AxiosResponse<LocationWithInfo> = await apiInstance.get(url, {params: {page}})
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getOneLocation = async (url: string) => {
+    const response: AxiosResponse<Location> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getMultiplyLocations = async (url: string) => {
+    const response: AxiosResponse<Location[]> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getFilteredLocations = async (url: string) => {
+    const response: AxiosResponse<LocationWithInfo> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+
+
+  static getAllEpisodes = async (url: ApiRoutesEnum, page?: number) => {
+    const response: AxiosResponse<EpisodeWithInfo> = await apiInstance.get(url, {params: {page}})
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getOneEpisodes = async (url: string) => {
+    const response: AxiosResponse<Episode> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getMultiplyEpisodes = async (url: string) => {
+    const response: AxiosResponse<Episode[]> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
+  }
+  static getFilteredEpisodes = async (url: string) => {
+    const response: AxiosResponse<EpisodeWithInfo> = await apiInstance.get(url)
+    if (!response) {
+      console.error('Someting goes wrong');
+    }
+    const { data } = response;
+    return data;
   }
 }
 

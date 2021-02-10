@@ -1,26 +1,16 @@
 // import { useState } from 'react';
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
-import { useDispatch, useStore } from 'react-redux';
 import logo from '../../images/skateboard.png';
-import { ApiRoutesEnum, CharactersWithInfo, GetAll } from '../../models';
-import { api } from '../../utils';
-import { characterActions } from '../../store';
 import './styles.scss';
+// import { AxiosResponse } from 'axios';
 
 const Header: React.FC = () => {
   // const [state, changeState] = useState();
-  const dispatch = useDispatch();
-  const store = useStore();
 
   const loginHandler = async () => {
-    const res: CharactersWithInfo = await api.getAll(ApiRoutesEnum.getCh)
 
-    if (res) {
-      dispatch(characterActions.getAllCharacters(res));
-    }
-    console.log(store.getState());
-    console.log(res);
+    console.log('work header')
   }
     return (
         <header>
@@ -39,4 +29,4 @@ const Header: React.FC = () => {
       </header> 
     )
 }
-export default Header;
+export { Header };
