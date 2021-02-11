@@ -1,16 +1,16 @@
 import {
-  GET_ALL_CHARACTERS,
-  GET_FILTERED_CHARACTERS,
-  GET_MULTIPLY_CHARACTERS,
-  GET_ONE_CHARACTER,
-  GET_ALL_LOCATIONS,
-  GET_ONE_LOCATION,
-  GET_MULTIPLY_LOCATIONS,
-  GET_FILTERED_LOCATIONS,
-  GET_ALL_EPISODES,
-  GET_ONE_EPISODE,
-  GET_MULTIPLY_EPISODES,
-  GET_FILTERED_EPISODES,
+  SET_ALL_CHARACTERS,
+  SET_FILTERED_CHARACTERS,
+  SET_MULTIPLY_CHARACTERS,
+  SET_ONE_CHARACTER,
+  SET_ALL_LOCATIONS,
+  SET_ONE_LOCATION,
+  SET_MULTIPLY_LOCATIONS,
+  SET_FILTERED_LOCATIONS,
+  SET_ALL_EPISODES,
+  SET_ONE_EPISODE,
+  SET_MULTIPLY_EPISODES,
+  SET_FILTERED_EPISODES,
   EPISODES_PAGE,
   LOCATIONS_PAGE,
   CHARACTERS_PAGE
@@ -116,19 +116,19 @@ export interface ApiRoutes {
   getEp?: string
 }
 interface getAllCharacters {
-  type: typeof GET_ALL_CHARACTERS,
+  type: typeof SET_ALL_CHARACTERS,
   payload: CharactersWithInfo
 }
 interface getOneCharacter {
-  type: typeof GET_ONE_CHARACTER,
+  type: typeof SET_ONE_CHARACTER,
   payload: Character
 }
 interface getMultiplyCharacters {
-  type: typeof GET_MULTIPLY_CHARACTERS,
+  type: typeof SET_MULTIPLY_CHARACTERS,
   payload: Character[]
 }
 interface getFilteredCharacters {
-  type: typeof GET_FILTERED_CHARACTERS,
+  type: typeof SET_FILTERED_CHARACTERS,
   payload: CharactersWithInfo
 }
 interface getCharacterPage {
@@ -138,19 +138,19 @@ interface getCharacterPage {
 export type allCharacterActionsType = getAllCharacters | getOneCharacter | getMultiplyCharacters | getFilteredCharacters | getCharacterPage;
 
 interface getAllLocations {
-  type: typeof GET_ALL_LOCATIONS,
+  type: typeof SET_ALL_LOCATIONS,
   payload: LocationWithInfo
 }
 interface getOneLocation {
-  type: typeof GET_ONE_LOCATION,
+  type: typeof SET_ONE_LOCATION,
   payload: Location
 }
 interface getMultiplyLocations {
-  type: typeof GET_MULTIPLY_LOCATIONS,
+  type: typeof SET_MULTIPLY_LOCATIONS,
   payload: Location[]
 }
 interface getFilteredLocations {
-  type: typeof GET_FILTERED_LOCATIONS,
+  type: typeof SET_FILTERED_LOCATIONS,
   payload: LocationWithInfo
 }
 interface getLocationPage {
@@ -160,19 +160,19 @@ interface getLocationPage {
 export type allLocationActionsType = getAllLocations | getOneLocation | getMultiplyLocations | getFilteredLocations | getLocationPage;
 
 interface getAllEpisodes {
-  type: typeof GET_ALL_EPISODES,
+  type: typeof SET_ALL_EPISODES,
   payload: EpisodeWithInfo
 }
 interface getOneEpisode {
-  type: typeof GET_ONE_EPISODE,
+  type: typeof SET_ONE_EPISODE,
   payload: Episode
 }
 interface getMultiplyEpisodes {
-  type: typeof GET_MULTIPLY_EPISODES,
+  type: typeof SET_MULTIPLY_EPISODES,
   payload: Episode[]
 }
 interface getFilteredEpisodes {
-  type: typeof GET_FILTERED_EPISODES,
+  type: typeof SET_FILTERED_EPISODES,
   payload: EpisodeWithInfo
 }
 interface getEpisodePage {

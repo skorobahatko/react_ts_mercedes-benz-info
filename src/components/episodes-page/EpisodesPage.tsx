@@ -6,6 +6,7 @@ import { episodesActions } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import { Header } from '../header';
 
 
 const EpisodesCardsPage: React.FC = () => {
@@ -26,7 +27,7 @@ const EpisodesCardsPage: React.FC = () => {
       const res = await api.getAllEpisodes(ApiRoutesEnum.getEp, currentPage);
 
       if (res) {
-        dispatch(episodesActions.getAllEpisodes(res));
+        dispatch(episodesActions.setAllEpisodes(res));
       }
     }
     if (!allEpisodes.results.length) {
@@ -44,6 +45,7 @@ const EpisodesCardsPage: React.FC = () => {
 
   return (
     <div className = 'container-fluid'>
+      <Header/>
         <SelfEpisodesCardsList arr={allEpisodes.results}/>
         <Pagination>
           <Pagination.First href={`/episodes/page=1`}/>

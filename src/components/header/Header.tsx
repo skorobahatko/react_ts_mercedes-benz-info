@@ -1,31 +1,22 @@
-// import { useState } from 'react';
 import * as React from 'react';
-import { Button } from 'react-bootstrap';
-import logo from '../../images/skateboard.png';
+import { Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import './styles.scss';
-// import { AxiosResponse } from 'axios';
 
 const Header: React.FC = () => {
-  // const [state, changeState] = useState();
-
-  const loginHandler = async () => {
-
-    console.log('work header')
-  }
     return (
-        <header>
-          <div className='container'>
-        <div className='header_left_side_container'>
-          <img src={logo} alt='logo' className='logo_img'/>
-        </div>
-        <div className='header_right_side_container'>
-          <Button 
-            variant='outline-secondary' 
-            type='submit' 
-            onClick={loginHandler}
-          >Login</Button>
-        </div>
-        </div>
+      <header>
+        <Navbar bg="dark" variant="dark">
+         <Navbar.Brand href="/home">Rick and Morty FAQ</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="/characters/page=1">Characters</Nav.Link>
+            <Nav.Link href="/locations/page=1">Locations</Nav.Link>
+            <Nav.Link href="/episodes/page=1">Episodes</Nav.Link>
+          </Nav>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form>
+        </Navbar> 
       </header> 
     )
 }

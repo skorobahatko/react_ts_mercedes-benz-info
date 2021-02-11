@@ -19,7 +19,7 @@ const CharacterSelfPage: React.FC = () => {
     async function fetchData() {
       const res = await api.getOneCharacter(`${ApiRoutesEnum.getCh}/${+id}`);
       if (res) {
-        dispatch(characterActions.getOneCharacter(res));
+        dispatch(characterActions.setOneCharacter(res));
       }
     }
     if (!allCharacters.results.length && !isCharacterExists) {

@@ -7,6 +7,7 @@ import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import { Header } from '../header';
 
 
 const CharacterCardsPage: React.FC = () => {
@@ -25,7 +26,7 @@ const CharacterCardsPage: React.FC = () => {
       const res = await api.getAllCharacters(ApiRoutesEnum.getCh, currentPage);
 
       if (res) {
-        dispatch(characterActions.getAllCharacters(res));
+        dispatch(characterActions.setAllCharacters(res));
       }
     }
     if (!allCharacters.results.length) {
@@ -43,6 +44,7 @@ const CharacterCardsPage: React.FC = () => {
 
   return (
     <div className = 'container-fluid'>
+        <Header/>
         <SelfCharactersCardsList arr={allCharacters.results}/>
         <Pagination>
           <Pagination.First href={`/characters/page=1`}/>

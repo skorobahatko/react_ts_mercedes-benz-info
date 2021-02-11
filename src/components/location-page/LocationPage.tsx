@@ -6,6 +6,7 @@ import { locationActions } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import { Header } from '../header';
 
 
 const LocationsCardsPage: React.FC = () => {
@@ -27,7 +28,7 @@ const LocationsCardsPage: React.FC = () => {
       const res = await api.getAllLocations(ApiRoutesEnum.getLc, currentPage);
 
       if (res) {
-        dispatch(locationActions.getAllLocations(res));
+        dispatch(locationActions.setAllLocations(res));
       }
     }
     if (!allLocations.results.length) {
@@ -45,6 +46,7 @@ const LocationsCardsPage: React.FC = () => {
 
   return (
     <div className = 'container-fluid'>
+        <Header/>
         <SelfLocationsCardsList arr={allLocations.results}/>
         <Pagination>
           <Pagination.First href={`/locations/page=1`}/>

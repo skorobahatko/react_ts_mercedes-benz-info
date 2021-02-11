@@ -7,115 +7,115 @@ import {
   EpisodeWithInfo
 } from "../models";
 
-export const GET_ALL_CHARACTERS = 'GET_ALL_CHARACTERS';
-export const GET_ONE_CHARACTER = 'GET_ONE_CHARACTER';
-export const GET_MULTIPLY_CHARACTERS = 'GET_MULTIPLY_CHARACTERS';
-export const GET_FILTERED_CHARACTERS = 'GET_FILTERED_CHARACTERS';
+export const SET_ALL_CHARACTERS = 'SET_ALL_CHARACTERS';
+export const SET_ONE_CHARACTER = 'SET_ONE_CHARACTER';
+export const SET_MULTIPLY_CHARACTERS = 'SET_MULTIPLY_CHARACTERS';
+export const SET_FILTERED_CHARACTERS = 'SET_FILTERED_CHARACTERS';
 
-const getAllCharacters = (info: CharactersWithInfo) => {
+const setAllCharacters = (info: CharactersWithInfo) => {
   return {
-    type: GET_ALL_CHARACTERS,
+    type: SET_ALL_CHARACTERS,
     payload: info
   }
 }
-const getOneCharacter = (info: Character) => {
+const setOneCharacter = (info: Character) => {
   return {
-    type: GET_ONE_CHARACTER,
+    type: SET_ONE_CHARACTER,
     payload: info
   }
 }
-const getMultiplyCharacters = (info: Character[]) => {
+const setMultiplyCharacters = (info: Character[]) => {
   return {
-    type: GET_MULTIPLY_CHARACTERS,
+    type: SET_MULTIPLY_CHARACTERS,
     payload: info
   }
 }
-const getFilteredCharacters = (info: CharactersWithInfo) => {
+const setFilteredCharacters = (info: CharactersWithInfo) => {
   return {
-    type: GET_FILTERED_CHARACTERS,
+    type: SET_FILTERED_CHARACTERS,
     payload: info
   }
 }
 
 export const characterActions = {
-  getAllCharacters,
-  getOneCharacter,
-  getMultiplyCharacters,
-  getFilteredCharacters
+  setAllCharacters,
+  setOneCharacter,
+  setMultiplyCharacters,
+  setFilteredCharacters
 }
 
-export const GET_ALL_LOCATIONS = 'GET_ALL_LOCATIONS';
-export const GET_ONE_LOCATION = 'GET_ONE_LOCATION';
-export const GET_MULTIPLY_LOCATIONS = 'GET_MULTIPLY_LOCATIONS';
-export const GET_FILTERED_LOCATIONS = 'GET_FILTERED_LOCATIONS';
+export const SET_ALL_LOCATIONS = 'SET_ALL_LOCATIONS';
+export const SET_ONE_LOCATION = 'SET_ONE_LOCATION';
+export const SET_MULTIPLY_LOCATIONS = 'SET_MULTIPLY_LOCATIONS';
+export const SET_FILTERED_LOCATIONS = 'SET_FILTERED_LOCATIONS';
 
-const getAllLocations = (info: LocationWithInfo) => {
+const setAllLocations = (info: LocationWithInfo) => {
   return {
-    type: GET_ALL_LOCATIONS,
+    type: SET_ALL_LOCATIONS,
     payload: info
   }
 }
-const getOneLocation = (info: Location) => {
+const setOneLocation = (info: Location) => {
   return {
-    type: GET_ONE_LOCATION,
+    type: SET_ONE_LOCATION,
     payload: info
   }
 }
-const getMultiplyLocations = (info: Location[]) => {
+const setMultiplyLocations = (info: Location[]) => {
   return {
-    type: GET_MULTIPLY_LOCATIONS,
+    type: SET_MULTIPLY_LOCATIONS,
     payload: info
   }
 }
-const getFilteredLocations = (info: LocationWithInfo) => {
+const setFilteredLocations = (info: LocationWithInfo) => {
   return {
-    type: GET_FILTERED_LOCATIONS,
+    type: SET_FILTERED_LOCATIONS,
     payload: info
   }
 }
 
 export const locationActions = {
-  getAllLocations,
-  getOneLocation,
-  getMultiplyLocations,
-  getFilteredLocations
+  setAllLocations,
+  setOneLocation,
+  setMultiplyLocations,
+  setFilteredLocations
 };
 
-export const GET_ALL_EPISODES = 'GET_ALL_EPISODES';
-export const GET_ONE_EPISODE = 'GET_ONE_EPISODE';
-export const GET_MULTIPLY_EPISODES = 'GET_MULTIPLY_EPISODES';
-export const GET_FILTERED_EPISODES = 'GET_FILTERED_EPISODES';
+export const SET_ALL_EPISODES = 'SET_ALL_EPISODES';
+export const SET_ONE_EPISODE = 'SET_ONE_EPISODE';
+export const SET_MULTIPLY_EPISODES = 'SET_MULTIPLY_EPISODES';
+export const SET_FILTERED_EPISODES = 'SET_FILTERED_EPISODES';
 
-const getAllEpisodes = (info: EpisodeWithInfo) => {
+const setAllEpisodes = (info: EpisodeWithInfo) => {
   return {
-    type: GET_ALL_EPISODES,
+    type: SET_ALL_EPISODES,
     payload: info
   }
 }
-const getOneEpisode = (info: Episode) => {
+const setOneEpisode = (info: Episode) => {
   return {
-    type: GET_ONE_EPISODE,
+    type: SET_ONE_EPISODE,
     payload: info
   }
 }
-const getMultiplyEpisodes = (info: Episode[]) => {
+const setMultiplyEpisodes = (info: Episode[]) => {
   return {
-    type: GET_MULTIPLY_EPISODES,
+    type: SET_MULTIPLY_EPISODES,
     payload: info
   }
 }
-const getFilteredEpisodes = (info: EpisodeWithInfo) => {
+const setFilteredEpisodes = (info: EpisodeWithInfo) => {
   return {
-    type: GET_FILTERED_EPISODES,
+    type: SET_FILTERED_EPISODES,
     payload: info
   }
 }
 
 export const episodesActions = {
-  getAllEpisodes,
-  getOneEpisode,
-  getMultiplyEpisodes,
-  getFilteredEpisodes
+  setAllEpisodes,
+  setOneEpisode,
+  setMultiplyEpisodes,
+  setFilteredEpisodes
 };
 
 export const CHARACTERS_PAGE = 'CHARACTERS_PAGE';
