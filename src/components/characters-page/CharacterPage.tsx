@@ -14,11 +14,9 @@ const CharacterCardsPage: React.FC = () => {
 
   const allCharacters = useSelector((state: GlobalStore) => state.characters.allCharacters);
   const totalPages = useSelector((state: GlobalStore) => state.characters.allCharacters.info.pages);
-  // const pageFromStore = useSelector((state: GlobalStore) => state.characters.page);
   const location = useLocation();
   
   const currentPage = +location.pathname.split('page=')[1];
-  // const isPageNeedToReload = pageFromStore === currentPage ? false : true
   console.log(location);
 
 

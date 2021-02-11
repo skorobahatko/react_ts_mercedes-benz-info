@@ -3,6 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
+  Redirect,
 } from 'react-router-dom';
 import { store } from '../../store'
 import { Provider } from 'react-redux';
@@ -34,6 +35,7 @@ const App: React.FC = () => {
           <Route path = '/locations/page=:page'>
             <LocationsCardsPage/>
           </Route>
+          <Redirect from='/' to='/home'/>
           <Route path = '*'>
             <div>404 not found</div>
           </Route>
