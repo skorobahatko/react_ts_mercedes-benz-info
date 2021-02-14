@@ -31,8 +31,8 @@ export interface CharacterStore {
 };
 export interface LocationStore {
   allLocations: LocationWithInfo,
-  oneLocation: Location,
-  multiplyLocations: Location[],
+  oneLocation: OneLocation,
+  multiplyLocations: OneLocation[],
   filteredLocations: LocationWithInfo,
   page: number
 }
@@ -45,7 +45,7 @@ export interface EpisodeStore {
 }
 export type GetAll = CharactersWithInfo | LocationWithInfo | EpisodeWithInfo;
 export type GetOne = Character | Location | Episode;
-export type GetMultiply = Character[] | Location[] | Episode[];
+export type GetMultiply = Character[] | OneLocation[] | Episode[];
 export type GetFiltered = CharactersWithInfo | LocationWithInfo | EpisodeWithInfo;
 
 export enum ApiRoutesEnum {
@@ -60,7 +60,7 @@ export interface CharactersWithInfo {
 }
 export interface LocationWithInfo {
   info: Info,
-  results: Location[]
+  results: OneLocation[]
 }
 export interface EpisodeWithInfo {
   info: Info,
@@ -92,7 +92,7 @@ export interface Character {
   url: string,
   created: string
 };
-export interface Location {
+export interface OneLocation {
   id: number,
   name: string,
   type: string,
@@ -143,11 +143,11 @@ interface getAllLocations {
 }
 interface getOneLocation {
   type: typeof SET_ONE_LOCATION,
-  payload: Location
+  payload: OneLocation
 }
 interface getMultiplyLocations {
   type: typeof SET_MULTIPLY_LOCATIONS,
-  payload: Location[]
+  payload: OneLocation[]
 }
 interface getFilteredLocations {
   type: typeof SET_FILTERED_LOCATIONS,

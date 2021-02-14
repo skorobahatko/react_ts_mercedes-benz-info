@@ -4,13 +4,11 @@ import { EpisodeWindow } from '../episode-self-window';
 import { EpisodeSelfCard } from "../self-card";
 import { useLocation } from 'react-router-dom';
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+const useQuery = () => new URLSearchParams(useLocation().search);
 
 const SelfEpisodesCardsList: React.FC<{arr: Episode[]}> = ({arr}) => {
   const [isEpisodeShowed, changeEpisodeStatus] = useState({show: false});
-  const query = useQuery().get('name');
+  const query = useQuery().get('id');
   useEffect(() => {
     if (query) {
 

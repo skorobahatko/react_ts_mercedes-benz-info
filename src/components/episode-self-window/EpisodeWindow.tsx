@@ -1,35 +1,65 @@
 import { Carousel } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { GlobalStore } from '../../models';
+import { useDispatch, useSelector } from "react-redux";
+import { ApiRoutesEnum, GlobalStore } from '../../models';
+import { useEffect } from "react";
+import { api } from "../../utils";
+import { useLocation, Link } from 'react-router-dom';
+import { characterActions, episodesActions } from '../../store';
+
+const useQuery = () => new URLSearchParams(useLocation().search)
 
 const EpisodeWindow: React.FC = () => {
-  const episode = useSelector((state: GlobalStore) => state.location.oneLocation)
+
+  const url = useQuery().get('id');
+  const dispatch = useDispatch();
+  const oneEpisode = useSelector((state: GlobalStore) => state.episode.oneEpisode);
+  const episodeCharacters = useSelector((state: GlobalStore) => state.characters.multiplyCharacters);
+
+  useEffect(() => {
+    async function fetchLocationData() {
+      const res = await api.getOneEpisode(`${ApiRoutesEnum.getEp}/${url}`);
+      const residentsForRequest = res.characters.map((el) => {
+        return el.split('/character/')[1];
+      })
+      const residentsRes = await api.getMultiplyCharacters(`${ApiRoutesEnum.getCh}/${residentsForRequest}`)
+      
+      if (res) {
+        dispatch(episodesActions.setOneEpisode(res));
+      }
+      if (residentsRes) {
+        dispatch(characterActions.setMultiplyCharacters(residentsRes));
+      }
+    }
+    fetchLocationData();
+  }, [url])
+  const { name, air_date, episode } = oneEpisode;
+
+  if (!oneEpisode.id) {
+    return (
+      <div>Loading</div>
+      )     
+  }
+
   return (
-    <div className='container d-flex'>
-      <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=First slide&bg=373940"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="holder.js/800x400?text=First slide&bg=373940"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+    <div className='container'>
+      <div>
+        <h1>{name}</h1>
+        <span>Air date: {air_date}<br/>Episode: {episode}<br/></span>
+        <Carousel fade={true} slide={false}>
+        {
+          episodeCharacters && episodeCharacters.length ? episodeCharacters.map((el, index) => {
+            return (
+              <Carousel.Item>
+                <img src={el.image} alt={el.name} key={index}/>
+                <Carousel.Caption>
+                  <Link to={`/characters/${el.id}`} style={{textDecoration: 'none', color: 'white'}}><h3>{el.name}</h3></Link>
+                </Carousel.Caption>
+              </Carousel.Item>
+            )
+          }) : <span>There is no residents</span>
+        }
       </Carousel>
+      </div>
     </div>
   )
 }

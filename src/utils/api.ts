@@ -1,6 +1,6 @@
-import { CharactersWithInfo, Character, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
+import { CharactersWithInfo, Character,OneLocation, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { ApiRoutesEnum, GetAll, GetOne, GetMultiply, GetFiltered } from '../models';
+import { ApiRoutesEnum } from '../models';
 // import config from '../config';
 
 const apiInstance: AxiosInstance = axios.create({
@@ -51,7 +51,7 @@ class api {
     return data;
   }
   static getOneLocation = async (url: string) => {
-    const response: AxiosResponse<Location> = await apiInstance.get(url)
+    const response: AxiosResponse<OneLocation> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
@@ -84,7 +84,7 @@ class api {
     const { data } = response;
     return data;
   }
-  static getOneEpisodes = async (url: string) => {
+  static getOneEpisode = async (url: string) => {
     const response: AxiosResponse<Episode> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');

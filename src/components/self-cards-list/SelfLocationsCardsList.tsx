@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
-import { Location } from "../../models"
+import { OneLocation } from "../../models"
 import { LocationWindow } from "../location-self-window";
 import { LocationSelfCard } from "../self-card";
 
@@ -8,16 +8,15 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const SelfLocationsCardsList: React.FC<{arr: Location[]}> = ({arr}) => {
+const SelfLocationsCardsList: React.FC<{arr: OneLocation[]}> = ({arr}) => {
   const [isLocationShowed, changeLocationStatus] = useState({show: false});
-  const query = useQuery().get('name');
+  const query = useQuery().get('id');
   useEffect(() => {
     if (query) {
 
       changeLocationStatus({show: true});
     }
   }, [query])
-  console.log(query)
 
   return (
       <div className='d-flex justify-content-around'>

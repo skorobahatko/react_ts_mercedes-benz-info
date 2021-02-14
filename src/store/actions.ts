@@ -1,6 +1,6 @@
 import {
   Character,
-  Location,
+  OneLocation,
   Episode,
   CharactersWithInfo,
   LocationWithInfo,
@@ -55,7 +55,7 @@ const setAllLocations = (info: LocationWithInfo) => {
     payload: info
   }
 }
-const setOneLocation = (info: Location) => {
+const setOneLocation = (info: OneLocation) => {
   return {
     type: SET_ONE_LOCATION,
     payload: info

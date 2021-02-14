@@ -8,7 +8,6 @@ import { Pagination } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import { Header } from '../header';
 
-
 const LocationsCardsPage: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -52,7 +51,7 @@ const LocationsCardsPage: React.FC = () => {
           <Pagination.First href={`/locations/page=1`}/>
           <Pagination.Prev href={`/locations/page=${(currentPage - 1) === 0 ? currentPage : currentPage - 1}`}/>
           <Pagination.Item active>{currentPage}</Pagination.Item>
-          <Pagination.Next href={`/locations/page=${currentPage + 1}`}/>
+          <Pagination.Next href={`/locations/page=${(currentPage + 1) > totalPages ? totalPages : currentPage + 1}`}/>
           <Pagination.Last href={`/locations/page=${totalPages}`}/>
         </Pagination>
     </div>
