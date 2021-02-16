@@ -1,4 +1,5 @@
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Character } from '../../models';
 
 const CharacterSelfCard: React.FC<Character> = (props) => {
@@ -10,10 +11,10 @@ const CharacterSelfCard: React.FC<Character> = (props) => {
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
-          Status: {status }
+          Status: {status}<br/>
           Species: {species}
         </Card.Text>
-        <Card.Link href={`/characters/${id}`}>more info</Card.Link>
+        <Button variant='secondary'><Link to={`/characters/${id}`}>Details</Link></Button>
       </Card.Body>
     </Card>
   )

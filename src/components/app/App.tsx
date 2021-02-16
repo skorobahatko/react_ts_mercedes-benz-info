@@ -13,6 +13,7 @@ import { EpisodesCardsPage } from '../episodes-page';
 import { LocationsCardsPage } from '../location-page';
 import { CharacterSelfPage } from '../character-self-page';
 import './App.scss';
+import { SearchPage } from '../search-page';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,12 @@ const App: React.FC = () => {
           <Route path = '/locations/page=:page'>
             <LocationsCardsPage/>
           </Route>
+          <Route path = '/search/page=:page'>
+            <SearchPage/>
+          </Route>
+          <Redirect from='/characters' to='/characters/page=1'/>
+          <Redirect from='/locations' to='/locations/page=1'/>
+          <Redirect from='/episodes' to='/episodes/page=1'/>
           <Redirect from='/' to='/home'/>
           <Route path = '*'>
             <div>404 not found</div>

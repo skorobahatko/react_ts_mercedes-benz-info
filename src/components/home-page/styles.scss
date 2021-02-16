@@ -3,53 +3,21 @@
   // height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
-}
-main {
-  width: 95%;
-  border: 2px solid black;
-  margin-top: 10px;
-  .main_first_path_container {
+  .container {
     display: flex;
-    align-items: center;
-    width: 100%;
-    .slider_container {
-      width: 60%;
-      div {
-        border: 2px solid black;
-        margin: 10px;
-        height: 60vh;
-      }
-    }
-    .header_and_description_container {
-      // margin-left: 10%;
-      width: 40%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      margin-top: 15px;
-      div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid black;
-        margin: 10px 10px 10px 0;
-        background-color: rgba(0, 0 ,0, 0.1);
-      }
-    }
+    justify-content: space-between;
+    margin-top: 10%;
   }
-  .main_second_path_container {
-    width: 100%;
+  .left-side-container {
+    width: 50%;
+  }
+  .right-side-container {
+    width: 50%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    .select_container {
-      width: 90%;
-      text-align: center;
-      border: 2px solid black;
-      margin: 10px;
-    }
+    flex-direction: column;
   }
 }
