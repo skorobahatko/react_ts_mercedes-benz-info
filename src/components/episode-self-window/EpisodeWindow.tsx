@@ -41,7 +41,7 @@ const EpisodeWindow: React.FC = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container' style={{marginTop: '15px'}}>
       <div>
         <h1>{name}</h1>
         <span>Air date: {air_date}<br/>Episode: {episode}<br/></span>

@@ -23,7 +23,7 @@ const SelfEpisodesCardsList: React.FC<{arr: Episode[]}> = ({arr}) => {
           return (<EpisodeSelfCard {...el} key={index}/>)
         })}
       </ul>
-      { isEpisodeShowed.show ?  <EpisodeWindow/> : <div className='container'>Choose some location to more info</div>}
+      { isEpisodeShowed.show ?  <EpisodeWindow/> : <div className='container'>Choose some episode for more info</div>}
     </div>
   )
 }

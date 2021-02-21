@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <Route path = '/locations/page=:page'>
             <LocationsCardsPage/>
           </Route>
-          <Route path = '/search/page=:page'>
+          <Route path = '/search'>
             <SearchPage/>
           </Route>
           <Redirect from='/characters' to='/characters/page=1'/>

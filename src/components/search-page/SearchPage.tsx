@@ -5,9 +5,12 @@ import { ApiRoutesEnum, GlobalStore } from '../../models';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { characterActions, locationActions, episodesActions } from '../../store';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const SearchPage = () => {  
   const dispatch = useDispatch();
+  const inputRef = useRef<HTMLInputElement>(null);
   async function getCharacters (value: string) {
     const res = await api.getFilteredCharacters(`${ApiRoutesEnum.getCh}?name=${value}`)
     if (res && res.results.length) {
@@ -28,21 +31,26 @@ const SearchPage = () => {
     }
   }
   const characters = useSelector((state: GlobalStore) => state.characters.filteredCharacters.results);
-  const loctions = useSelector((state: GlobalStore) => state.location.filteredLocations.results);
+  const locations = useSelector((state: GlobalStore) => state.location.filteredLocations.results);
   const episodes = useSelector((state: GlobalStore) => state.episode.filteredEpisodes.results);
-  const submitForm = async (event: any) => {
-    event.preventDefault();
-    if (event) {
-        console.log(event)
-      await getCharacters(event);
+  const submitForm = async (event: React.FormEvent) => {
+    try {
+      event.preventDefault();
+      if (inputRef && inputRef.current) {
+        await getCharacters(inputRef.current.value);
+        await getLocations(inputRef.current.value);
+        await getEpisodes(inputRef.current.value);
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
   return(
     <div className='container-fluid'>
       <Header/>
-      <Form inline>
+      <Form inline onSubmit={submitForm}>
         <div className='main-search-input-container'>
-          <Form.Control type="text" placeholder="Search somethink" className="mr-sm-2" size='lg' onSubmit={submitForm}/>
+          <Form.Control type="text" placeholder="Search somethink" className="mr-sm-2" size='lg' ref={inputRef}/>
           <Button variant="outline-info" type='submit'>Search</Button>
         </div>   
       </Form> 
@@ -52,13 +60,43 @@ const SearchPage = () => {
           <ListGroup>
           { 
             characters && characters.length ? 
-              characters.map((el) => {
+              characters.map((el, index) => {
                   return(
-                    <ListGroup.Item>
-                      {el.name}
+                    <ListGroup.Item key={index}>
+                      <Link to={`/characters/${el.id}`}>{el.name}</Link>
                     </ListGroup.Item>
                   )
               }) : <span>there is no characters :(</span>
+          }
+          </ListGroup>
+        </div>
+        <div>
+          <h2>Locations from search: </h2>
+          <ListGroup>
+          {
+            locations && locations.length ? 
+              locations.map((el, index) => {
+                  return(
+                    <ListGroup.Item key={index}>
+                      <Link to={`/locations/page=1?id=${el.id}`}>{el.name}</Link>
+                    </ListGroup.Item>
+                  )
+              }) : <span>there is no locations :(</span>
+          }
+          </ListGroup>
+        </div>
+        <div>
+          <h2>Episodes from search: </h2>
+          <ListGroup>
+          { 
+            episodes && episodes.length ? 
+              episodes.map((el, index) => {
+                  return(
+                    <ListGroup.Item key={index}>
+                      <Link to={`/episodes/page=1?id=${el.id}`}>{el.name}</Link>
+                    </ListGroup.Item>
+                  )
+              }) : <span>there is no episodes :(</span>
           }
           </ListGroup>
         </div>

@@ -9,12 +9,12 @@ const apiInstance: AxiosInstance = axios.create({
 
 class api {
   static getAllCharacters = async (url: ApiRoutesEnum, page?: number) => {
-    const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url, {params: {page}})
-    if (!response) {
-      console.error('Someting goes wrong');
-    }
-    const { data } = response;
-    return data;
+      const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url, {params: {page}})
+      if (!response) {
+        console.error('Someting goes wrong');
+      }
+      const { data } = response;
+      return data;
   }
   static getOneCharacter = async (url: string) => {
     const response: AxiosResponse<Character> = await apiInstance.get(url)
@@ -34,6 +34,7 @@ class api {
   }
   static getFilteredCharacters = async (url: string) => {
     const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url)
+    console.log(response)
     if (!response) {
       console.error('Someting goes wrong');
     }

@@ -13,7 +13,7 @@ const Header: React.FC = () => {
             <Nav.Link href="/episodes/page=1">Episodes</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href='/search/page=1'>Search</Nav.Link>
+            <Nav.Link href='/search'>Search</Nav.Link>
           </Nav>
         </Navbar> 
       </header> 

@@ -1,11 +1,10 @@
-import { Carousel, CarouselItem } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ApiRoutesEnum, GlobalStore } from '../../models';
 import { useEffect } from "react";
 import { api } from "../../utils";
 import { useLocation, Link } from 'react-router-dom';
 import { characterActions, locationActions } from '../../store';
-import { SelfCharactersCardsList } from "../self-cards-list";
 
 const useQuery = () => new URLSearchParams(useLocation().search)
 
@@ -42,7 +41,7 @@ const LocationWindow: React.FC = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container' style={{marginTop: '15px'}}>
       <div>
         <h1>{name}</h1>
         <span>Type: {type}<br/>Dimension: {dimension}<br/></span>
