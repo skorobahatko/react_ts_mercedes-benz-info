@@ -1,0 +1,23 @@
+.container-fluid {
+  width: 100vw;
+  // height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+  }
+  .left-side-container {
+    width: 50%;
+  }
+  .right-side-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
