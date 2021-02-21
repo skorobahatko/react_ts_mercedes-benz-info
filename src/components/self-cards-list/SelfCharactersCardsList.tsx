@@ -1,4 +1,3 @@
-import { CardColumns } from "react-bootstrap";
 import { Character } from "../../models"
 import './styles.scss';
 import { CharacterSelfCard } from "../self-card/CharacterSelfCard";

@@ -15,7 +15,6 @@ const SelfEpisodesCardsList: React.FC<{arr: Episode[]}> = ({arr}) => {
       changeEpisodeStatus({show: true});
     }
   }, [query])
-  console.log(query)
   return (
     <div className='d-flex justify-content-around'>
       <ul className="list-group">

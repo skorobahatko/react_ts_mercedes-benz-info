@@ -1,6 +1,7 @@
 import { CharactersWithInfo, Character,OneLocation, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiRoutesEnum } from '../models';
+import { rejects } from 'assert';
 // import config from '../config';
 
 const apiInstance: AxiosInstance = axios.create({
@@ -33,13 +34,19 @@ class api {
     return data;
   }
   static getFilteredCharacters = async (url: string) => {
-    const response: AxiosResponse<CharactersWithInfo> = await apiInstance.get(url)
-    console.log(response)
-    if (!response) {
-      console.error('Someting goes wrong');
-    }
-    const { data } = response;
-    return data;
+    const response: Promise<CharactersWithInfo> = new Promise((resolve, rejects) => {
+      apiInstance.get(url).then((response) => {
+        const { data } = response;
+        if (data) {
+          resolve(data)          
+        }
+      }).catch((error) => {
+        if (error) {
+          resolve({info: {count: 0, pages: 0, next: '', prev: ''}, results: []})
+        }
+      })
+    })
+    return response;
   }
 
 
@@ -68,12 +75,19 @@ class api {
     return data;
   }
   static getFilteredLocations = async (url: string) => {
-    const response: AxiosResponse<LocationWithInfo> = await apiInstance.get(url)
-    if (!response) {
-      console.error('Someting goes wrong');
-    }
-    const { data } = response;
-    return data;
+    const response: Promise<LocationWithInfo> = new Promise((resolve, rejects) => {
+      apiInstance.get(url).then((response) => {
+        const { data } = response;
+        if (data) {
+          resolve(data)          
+        }
+      }).catch((error) => {
+        if (error) {
+          resolve({info: {count: 0, pages: 0, next: '', prev: ''}, results: []})
+        }
+      })
+    })
+    return response;
   }
 
 
@@ -102,12 +116,19 @@ class api {
     return data;
   }
   static getFilteredEpisodes = async (url: string) => {
-    const response: AxiosResponse<EpisodeWithInfo> = await apiInstance.get(url)
-    if (!response) {
-      console.error('Someting goes wrong');
-    }
-    const { data } = response;
-    return data;
+    const response: Promise<EpisodeWithInfo> = new Promise((resolve, rejects) => {
+      apiInstance.get(url).then((response) => {
+        const { data } = response;
+        if (data) {
+          resolve(data)          
+        }
+      }).catch((error) => {
+        if (error) {
+          resolve({info: {count: 0, pages: 0, next: '', prev: ''}, results: []})
+        }
+      })
+    })
+    return response;
   }
 }
 
