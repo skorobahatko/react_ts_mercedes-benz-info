@@ -108,7 +108,7 @@ class api {
     return data;
   }
   static getMultiplyEpisodes = async (url: string) => {
-    const response: AxiosResponse<Episode[]> = await apiInstance.get(url)
+    const response: AxiosResponse<Episode[] | Episode> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
