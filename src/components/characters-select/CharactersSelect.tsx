@@ -1,10 +1,8 @@
-import { Dropdown, Form } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { IndexKind } from 'typescript';
 import { Episode } from '../../models';
 
 const CharactersSelect: React.FC<Episode[]> = (episodes) => {
-    console.log(episodes)
   return(
       <Dropdown>
           <Dropdown.Toggle variant='success' id='dropdown-basic'>

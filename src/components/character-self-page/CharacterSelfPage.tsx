@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useStore, useDispatch, useSelector } from "react-redux"
 import { useLocation, Link } from "react-router-dom";
-import { GlobalStore } from "../../models";
+import { GlobalStore, Episode } from "../../models";
 import { characterActions, episodesActions } from '../../store';
 import { api } from '../../utils';
 import { ApiRoutesEnum } from '../../models';
 import { Header } from '../header';
 import { CharactersSelect } from '../characters-select';
-import { Dropdown } from "react-bootstrap";
 
 const CharacterSelfPage: React.FC = () => {
   const store = useStore();
@@ -27,27 +26,25 @@ const CharacterSelfPage: React.FC = () => {
         if (episode.length) {
           const episodeList = getEpisodesPageList(episode);
           const episodeRes = await api.getMultiplyEpisodes(`${ApiRoutesEnum.getEp}/${episodeList}`)
-          if (episodeRes) {
-            dispatch(episodesActions.setMultiplyEpisodes(episodeRes));
+            if ((episodeRes as Episode[]).length) {
+              dispatch(episodesActions.setMultiplyEpisodes(episodeRes as Episode[]));
+            }
+            if ((episodeRes as Episode).id) {
+              dispatch(episodesActions.setOneEpisode(episodeRes as Episode));
           }
         }
 
         dispatch(characterActions.setOneCharacter(res));
       }
     }
-    if (!allCharacters.results.length && !isCharacterExists) {
-      fetchData();
-    }
+    fetchData();
   }, [])
   const oneCharacter = useSelector((state: GlobalStore) => state.characters.oneCharacter);
   const multiplyEpisodes = useSelector((state: GlobalStore) => state.episode.multiplyEpisodes);
-  console.log(oneCharacter);
+  const oneEpisode = useSelector((state: GlobalStore) => state.episode.oneEpisode);
   const character = isCharacterExists ? isCharacterExists : oneCharacter;
   if (character.id === 0) {
     return (<div>wait</div>)
-  }
-  if (multiplyEpisodes) {
-    console.log(multiplyEpisodes)
   }
   const { name, status, species, gender, origin, location, image } = character;
 
@@ -64,8 +61,6 @@ const CharacterSelfPage: React.FC = () => {
     }    
     return obj;
   }
-
-  console.log(character)
 
   return (
     <div className='container-fluid'>
@@ -86,7 +81,8 @@ const CharacterSelfPage: React.FC = () => {
             }
             </p>
                 {
-                  multiplyEpisodes ? <CharactersSelect {...isObject(multiplyEpisodes)}/> : <span>No episodes to show</span>
+                  multiplyEpisodes.length ? 
+                  <CharactersSelect {...multiplyEpisodes}/> : oneEpisode.id ? <CharactersSelect {...isObject(oneEpisode)}/> : <span>No episodes to show</span>
                 }
           </div>  
         <div>

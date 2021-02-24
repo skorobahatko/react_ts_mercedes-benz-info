@@ -1,8 +1,6 @@
 import { CharactersWithInfo, Character,OneLocation, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiRoutesEnum } from '../models';
-import { rejects } from 'assert';
-// import config from '../config';
 
 const apiInstance: AxiosInstance = axios.create({
   baseURL: 'https://rickandmortyapi.com/api'
@@ -108,7 +106,7 @@ class api {
     return data;
   }
   static getMultiplyEpisodes = async (url: string) => {
-    const response: AxiosResponse<Episode[]> = await apiInstance.get(url)
+    const response: AxiosResponse<Episode[] | Episode> = await apiInstance.get(url)
     if (!response) {
       console.error('Someting goes wrong');
     }
