@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Episode } from '../../models';
 
 const CharactersSelect: React.FC<Episode[]> = (episodes) => {
-    console.log(episodes)
   return(
       <Dropdown>
           <Dropdown.Toggle variant='success' id='dropdown-basic'>

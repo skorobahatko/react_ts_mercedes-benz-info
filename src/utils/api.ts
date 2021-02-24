@@ -1,8 +1,6 @@
 import { CharactersWithInfo, Character,OneLocation, LocationWithInfo, Episode, EpisodeWithInfo } from './../models/interfaces';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiRoutesEnum } from '../models';
-import { rejects } from 'assert';
-// import config from '../config';
 
 const apiInstance: AxiosInstance = axios.create({
   baseURL: 'https://rickandmortyapi.com/api'

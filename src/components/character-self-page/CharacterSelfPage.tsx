@@ -7,7 +7,6 @@ import { api } from '../../utils';
 import { ApiRoutesEnum } from '../../models';
 import { Header } from '../header';
 import { CharactersSelect } from '../characters-select';
-import { Dropdown } from "react-bootstrap";
 
 const CharacterSelfPage: React.FC = () => {
   const store = useStore();
@@ -43,7 +42,6 @@ const CharacterSelfPage: React.FC = () => {
   const oneCharacter = useSelector((state: GlobalStore) => state.characters.oneCharacter);
   const multiplyEpisodes = useSelector((state: GlobalStore) => state.episode.multiplyEpisodes);
   const oneEpisode = useSelector((state: GlobalStore) => state.episode.oneEpisode);
-  console.log(oneCharacter);
   const character = isCharacterExists ? isCharacterExists : oneCharacter;
   if (character.id === 0) {
     return (<div>wait</div>)
@@ -63,8 +61,6 @@ const CharacterSelfPage: React.FC = () => {
     }    
     return obj;
   }
-
-  console.log(character)
 
   return (
     <div className='container-fluid'>
