@@ -14,7 +14,7 @@ const CharacterSelfCard: React.FC<Character> = (props) => {
           Status: {status}<br/>
           Species: {species}
         </Card.Text>
-        <Button variant='secondary'><Link to={`/characters/${id}`}>Details</Link></Button>
+        <Button variant='primary'><Link to={`/characters/${id}`}  style={{textDecoration: 'none', color: 'white'}}>Details</Link></Button>
       </Card.Body>
     </Card>
   )
